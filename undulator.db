@@ -1,0 +1,879 @@
+#### DIGITAL INPUTS ####
+
+record(bi, "$(IOC):OvertravelN1")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 OvertravelN1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):OvertravelN2")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 OvertravelN2")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):OvertravelN3")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 OvertravelN3")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):OvertravelN4")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 OvertravelN4")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):OvertravelP1")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 OvertravelP1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+
+record(bi, "$(IOC):OvertravelP2")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 OvertravelP2")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):OvertravelP3")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 OvertravelP3")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):OvertravelP4")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 OvertravelP4")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):GearVIM")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 GearVIM.IP")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+
+record(bi, "$(IOC):GearVIM")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 GearVIM.IP")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):GearHIM")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 GearHIM.IP")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):GearEPM")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 GearEPM.IP")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+
+record(bi, "$(IOC):GearLPM")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 GearLPM.IP")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):GearVIM")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 GearVIM.IP")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+
+#### Enable/Disable Flags ####
+
+record(bo, "$(IOC):EnContactor")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[0] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnClear")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[1] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+
+record(bo, "$(IOC):EnServo")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[2] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):DisServo")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[3] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnHome")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[4] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnCmsMode")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[7] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnVIMode")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[8] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnHIMode")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[9] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnEPMode")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[10] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnLPMode")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[11] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnMove")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[5] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnCam")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[6] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):Stop")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[12] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bo, "$(IOC):EnGeneralCoupling")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 EnFlags[13] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+#### Movement parameters ####
+
+record(ao, "$(IOC):HomingAccel")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 HomingAccel S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s2")
+}
+
+record(ao, "$(IOC):HomingJerk")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 HomingJerk S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s3")
+}
+
+
+record(ao, "$(IOC):HomingSpeed")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 HomingSpeed S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s")
+}
+
+
+record(ao, "$(IOC):MoveAccel")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MoveAccel S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s2")
+}
+
+record(ao, "$(IOC):MoveJerk")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MoveJerk S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s3")
+}
+
+record(ao, "$(IOC):MoveSpeed")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MoveSpeed S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s")
+}
+
+record(ao, "$(IOC):OvertravelClearDst")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 OvertravelClearDst S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):OvertravelClearSpd")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 OvertravelClearSpd S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s")
+}
+
+record(ao, "$(IOC):CamDScaling")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 CamDScaling S .1")
+    field(PREC, "6")
+}
+
+record(ao, "$(IOC):CamTScaling")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 CamTScaling S .1")
+    field(PREC, "6")
+}
+
+record(ao, "$(IOC):CouplingMaster")
+{
+	field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 CouplingMaster S .1")
+    field(PREC, "0")
+}
+
+record(ao, "$(IOC):CouplingSlaves")
+{
+	field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 CouplingSlaves S .1")
+    field(PREC, "0")
+}
+
+record(ao, "$(IOC):CouplingDirection")
+{
+	field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 CouplingDirection S .1")
+    field(PREC, "0")
+}
+
+#### MotionGroup ####
+
+
+#### AxisA ####
+
+record(ao, "$(IOC):AxisA:ActualPosition")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisA.ActualPosition S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisA:ActualVelocity")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisA.ActualVelocity S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s")
+}
+
+record(ao, "$(IOC):AxisA:OutputCurrent")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisA.OutputCurrent S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(ao, "$(IOC):AxisA:PositionError")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisA.PositionError S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisA:TorqueReference")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisA.TorqueReference S .1")
+    field(PREC, "2")
+    field(EGU, "%")
+}
+
+record(ao, "$(IOC):AxisA:AxisStatus")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisA.AxisStatus S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(ao, "$(IOC):AxisA:MotionStatus")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisA.MotionStatus S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(bi, "$(IOC):AxisA:MoveStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisA.MoveStatus")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):AxisA:DriveEnableStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisA.DriveEnableStatus")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):AxisA:BrakeStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisA.MechanicalBrakeOutputStatus")
+    field(ZNAM, "True")
+    field(ONAM, "False")
+}
+
+record(ao, "$(IOC):AxisA:HomePos")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 HomePos[0] S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(bo, "$(IOC):AxisA:Move")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MoveAxes[0] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(ao, "$(IOC):AxisA:MovePos")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MovePos[0] S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisB:ActualPosition")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisB.ActualPosition S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisB:ActualVelocity")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisB.ActualVelocity S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s")
+}
+
+record(ao, "$(IOC):AxisB:OutputCurrent")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisB.OutputCurrent S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(ao, "$(IOC):AxisB:PositionError")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisB.PositionError S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisB:TorqueReference")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisB.TorqueReference S .1")
+    field(PREC, "2")
+    field(EGU, "%")
+}
+
+record(ao, "$(IOC):AxisB:AxisStatus")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisB.AxisStatus S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(ao, "$(IOC):AxisB:MotionStatus")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisB.MotionStatus S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(bi, "$(IOC):AxisB:MoveStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisB.MoveStatus")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):AxisB:DriveEnableStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisB.DriveEnableStatus")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):AxisB:BrakeStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisB.MechanicalBrakeOutputStatus")
+    field(ZNAM, "True")
+    field(ONAM, "False")
+}
+
+record(ao, "$(IOC):AxisB:HomePos")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 HomePos[1] S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(bo, "$(IOC):AxisB:Move")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MoveAxes[1] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(ao, "$(IOC):AxisB:MovePos")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MovePos[1] S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisC:ActualPosition")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisC.ActualPosition S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisC:ActualVelocity")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisC.ActualVelocity S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s")
+}
+
+record(ao, "$(IOC):AxisC:OutputCurrent")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisC.OutputCurrent S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(ao, "$(IOC):AxisC:PositionError")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisC.PositionError S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisC:TorqueReference")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisC.TorqueReference S .1")
+    field(PREC, "2")
+    field(EGU, "%")
+}
+
+record(ao, "$(IOC):AxisC:AxisStatus")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisC.AxisStatus S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(ao, "$(IOC):AxisC:MotionStatus")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisC.MotionStatus S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(bi, "$(IOC):AxisC:MoveStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisC.MoveStatus")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):AxisC:DriveEnableStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisC.DriveEnableStatus")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):AxisC:BrakeStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisC.MechanicalBrakeOutputStatus")
+    field(ZNAM, "True")
+    field(ONAM, "False")
+}
+
+record(ao, "$(IOC):AxisC:HomePos")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 HomePos[2] S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(bo, "$(IOC):AxisC:Move")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MoveAxes[2] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(ao, "$(IOC):AxisC:MovePos")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MovePos[2] S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisD:ActualPosition")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisD.ActualPosition S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisD:ActualVelocity")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisD.ActualVelocity S .1")
+    field(PREC, "6")
+    field(EGU, "mm/s")
+}
+
+record(ao, "$(IOC):AxisD:OutputCurrent")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisD.OutputCurrent S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(ao, "$(IOC):AxisD:PositionError")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisD.PositionError S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(ao, "$(IOC):AxisD:TorqueReference")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisD.TorqueReference S .1")
+    field(PREC, "2")
+    field(EGU, "%")
+}
+
+record(ao, "$(IOC):AxisD:AxisStatus")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisD.AxisStatus S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(ao, "$(IOC):AxisD:MotionStatus")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 AxisD.MotionStatus S .1")
+    field(PREC, "3")
+    field(EGU, "A")
+}
+
+record(bi, "$(IOC):AxisD:MoveStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisD.MoveStatus")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):AxisD:DriveEnableStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisD.DriveEnableStatus")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(bi, "$(IOC):AxisD:BrakeStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 AxisD.MechanicalBrakeOutputStatus")
+    field(ZNAM, "True")
+    field(ONAM, "False")
+}
+
+record(ao, "$(IOC):AxisD:HomePos")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 HomePos[3] S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+record(bo, "$(IOC):AxisD:Move")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MoveAxes[3] S .1")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+}
+
+record(ao, "$(IOC):AxisD:MovePos")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 MovePos[3] S .1")
+    field(PREC, "6")
+    field(EGU, "mm")
+}
+
+#### Run Flags ####
+record(ai, "$(IOC):RunFlag")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 RunFlag")
+}
+
+#### Faults ####
+record(ai, "$(IOC):ControllerStatus")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 ControllerStatus")
+}
+
+record(ai, "$(IOC):AxisFault")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 MotionGroup0.AxisFault")
+}
+
+record(ai, "$(IOC):LastOpSuccessful")
+{
+    field(SCAN, ".1 second")
+    field(DTYP, "EtherIP")
+    field(INP, "@plc1 LastOpSuccessful")
+}
