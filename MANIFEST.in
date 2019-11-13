@@ -1,0 +1,3 @@
+include VERSION
+recursive-include imautils *.ui
+graft imautils/resources/img

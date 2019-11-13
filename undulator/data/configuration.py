@@ -1,0 +1,1 @@
+"""Undulator configuration module."""
