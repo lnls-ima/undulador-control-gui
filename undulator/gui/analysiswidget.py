@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import os as _os
+import sys as _sys
 import pandas as _pd
 import qtpy.uic as _uic
+import traceback as _traceback
+
 from qtpy.QtWidgets import (
     QWidget as _QWidget,
+    QMessageBox as _QMessageBox,
     )
 
 from undulator.gui.utils import getUiFile as _getUiFile
 import imautils.gui.mplwidget as _mplwidget 
-# from . import mplwidget as _mplwidget
 
 
 class AnalysisWidget(_QWidget):
@@ -63,18 +66,24 @@ class AnalysisWidget(_QWidget):
 
     def load(self):
         """Loads configuration set."""
-        if not self.flag_updating_list:
-            _filename = self.ui.cmb_file.currentText() + '.dat'
-            if _filename != '.dat':
-                with open(_filename, 'r') as _f:
-                    _comments = _f.readline()[:-1].strip('Comments: ')
-                    _points = _f.readline()[:-1].strip('Test positions [mm]: ')
-                self.df = _pd.read_csv(_filename, sep='\t',
-                                       skiprows=2, header=0)
-            self.ui.le_comments.setText(_comments)
-            self.ui.le_points.setText(_points)
-            self.list_data()
-            self.print_parameters()
+        try:
+            if not self.flag_updating_list:
+                _filename = self.ui.cmb_file.currentText() + '.dat'
+                if _filename != '.dat':
+                    with open(_filename, 'r') as _f:
+                        _comments = _f.readline()[:-1].strip('Comments: ')
+                        _points = _f.readline()[:-1].strip(
+                            'Test positions [mm]: ')
+                    self.df = _pd.read_csv(_filename, sep='\t',
+                                           skiprows=2, header=0)
+                self.ui.le_comments.setText(_comments)
+                self.ui.le_points.setText(_points)
+                self.list_data()
+                self.print_parameters()
+        except Exception:
+            _traceback.print_exc(file=_sys.stdout)
+            _msg = 'Could not open the file.'
+            _QMessageBox.warning(self, 'Failure', _msg, _QMessageBox.Ok)
 
     def list_data(self):
         """Lists data and inserts into plot combobox."""
@@ -97,36 +106,42 @@ class AnalysisWidget(_QWidget):
 
     def plot(self):
         """Plots test data."""
-        if not self.flag_updating_data:
-            _canvas = self.ui.plot.canvas
-            _data = self.ui.cmb_plot.currentText()
-            _data_2 = self.ui.cmb_plot_2.currentText()
-            _ax = _canvas.ax.get_shared_x_axes().get_siblings(_canvas.ax)
-            _ax_y1 = _ax[1]
-            _ax_y2 = _ax[0]
-            _ax_y1.clear()
-            _ax_y2.clear()
-            if _data_2 is not '':
-                _ax_y2.plot(self.df['t [s]'], self.df[_data_2],
-                            'r-', label=_data_2)
-                _ax_y2.set_ylabel(_data_2)
-                _ax_y2.legend()
-            if _data in ['ActualPos [mm]', 'PosError [mm]',
-                         'Current [A]', 'Torque [%]']:
-                _data_split = _data.split(' ')
-                for _motor in ['A', 'B', 'C', 'D']:
-                    _datam = _data_split[0] + _motor + ' ' + _data_split[1]
-                    _ax_y1.plot(self.df['t [s]'], self.df[_datam],
-                                label=_datam, alpha=0.8)
-            else:
-                _ax_y1.plot(self.df['t [s]'], self.df[_data],
-                            label=_data, alpha=0.8)
-            _ax_y1.set_ylabel(_data)
-            _ax_y1.legend()
-            _canvas.ax.set_xlabel('t [s]')
-            _canvas.ax.grid(1)
-            _canvas.fig.tight_layout()
-            _canvas.draw()
+        try:
+            if not self.flag_updating_data:
+                _canvas = self.ui.plot.canvas
+                _data = self.ui.cmb_plot.currentText()
+                _data_2 = self.ui.cmb_plot_2.currentText()
+                _ax = _canvas.ax.get_shared_x_axes().get_siblings(_canvas.ax)
+                _ax_y1 = _ax[1]
+                _ax_y2 = _ax[0]
+                _ax_y1.clear()
+                _ax_y2.clear()
+                if _data_2 is not '':
+                    _ax_y2.plot(self.df['t [s]'], self.df[_data_2],
+                                'r-', label=_data_2)
+                    _ax_y2.set_ylabel(_data_2)
+                    _ax_y2.legend()
+                if _data in ['ActualPos [mm]', 'PosError [mm]',
+                             'Current [A]', 'Torque [%]']:
+                    _data_split = _data.split(' ')
+                    for _motor in ['A', 'B', 'C', 'D']:
+                        _datam = _data_split[0] + _motor + ' ' + _data_split[1]
+                        _ax_y1.plot(self.df['t [s]'], self.df[_datam],
+                                    label=_datam, alpha=0.8)
+                else:
+                    _ax_y1.plot(self.df['t [s]'], self.df[_data],
+                                label=_data, alpha=0.8)
+                _ax_y1.set_ylabel(_data)
+                _ax_y1.legend()
+                _canvas.ax.set_xlabel('t [s]')
+                _canvas.ax.grid(1)
+                _canvas.fig.tight_layout()
+                _canvas.draw()
+        except Exception:
+            _traceback.print_exc(file=_sys.stdout)
+            _msg = ('Could not plot the data.\nPlease check if this is the'
+                    'right file.')
+            _QMessageBox.warning(self, 'Failure', _msg, _QMessageBox.Ok)
 
     def print_parameters(self):
         """Shows some axis parameters on the UI."""
