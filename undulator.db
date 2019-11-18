@@ -367,11 +367,27 @@ record(ao, "$(IOC):CouplingSlaves")
     field(PREC, "0")
 }
 
-record(ao, "$(IOC):CouplingDirection")
+record(ao, "$(IOC):CouplingDirection[0]")
 {
 	field(SCAN, "Passive")
     field(DTYP, "EtherIP")
-    field(OUT, "@plc1 CouplingDirection S .1")
+    field(OUT, "@plc1 CouplingDirection[0] S .1")
+    field(PREC, "0")
+}
+
+record(ao, "$(IOC):CouplingDirection[1]")
+{
+	field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 CouplingDirection[1] S .1")
+    field(PREC, "0")
+}
+
+record(ao, "$(IOC):CouplingDirection[2]")
+{
+	field(SCAN, "Passive")
+    field(DTYP, "EtherIP")
+    field(OUT, "@plc1 CouplingDirection[2] S .1")
     field(PREC, "0")
 }
 

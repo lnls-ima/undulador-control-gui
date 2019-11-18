@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>745</width>
+    <width>782</width>
     <height>365</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
   <property name="inputMethodHints">
    <set>Qt::ImhFormattedNumbersOnly</set>
   </property>
-  <layout class="QGridLayout" name="gridLayout_9">
+  <layout class="QGridLayout" name="gridLayout_11">
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox_3">
      <property name="sizePolicy">
@@ -449,6 +449,123 @@
          </widget>
         </item>
        </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Cam Parameters</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_9">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Distance Scaling:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="PyDMLineEdit" name="le_CamDScaling">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="precision" stdset="0">
+           <number>0</number>
+          </property>
+          <property name="precisionFromPV" stdset="0">
+           <bool>true</bool>
+          </property>
+          <property name="channel" stdset="0">
+           <string>ca://und:CamDScaling</string>
+          </property>
+          <property name="displayFormat" stdset="0">
+           <enum>PyDMLineEdit::Default</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Time Scaling:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="PyDMLineEdit" name="le_CamTScaling">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="precision" stdset="0">
+           <number>0</number>
+          </property>
+          <property name="precisionFromPV" stdset="0">
+           <bool>true</bool>
+          </property>
+          <property name="channel" stdset="0">
+           <string>ca://und:CamTScaling</string>
+          </property>
+          <property name="displayFormat" stdset="0">
+           <enum>PyDMLineEdit::Default</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="PyDMPushButton" name="pbt_Cam">
+        <property name="toolTip">
+         <string/>
+        </property>
+        <property name="text">
+         <string>Cam</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+        <property name="rules" stdset="0">
+         <string>[{&quot;name&quot;: &quot;Enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;channel&quot;: &quot;ca://und:AxisA:DriveEnableStatus&quot;, &quot;trigger&quot;: true}]}]</string>
+        </property>
+        <property name="channel" stdset="0">
+         <string>ca://und:EnCam</string>
+        </property>
+        <property name="pressValue" stdset="0">
+         <string>1</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -1018,21 +1135,21 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="PyDMPushButton" name="pbt_test">
+       <widget class="PyDMPushButton" name="pbt_Stop">
         <property name="toolTip">
          <string/>
         </property>
         <property name="text">
-         <string>Test</string>
+         <string>STOP</string>
         </property>
-        <property name="checked">
+        <property name="checkable">
          <bool>false</bool>
         </property>
         <property name="rules" stdset="0">
          <string>[{&quot;name&quot;: &quot;Enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;channel&quot;: &quot;ca://und:AxisA:DriveEnableStatus&quot;, &quot;trigger&quot;: true}]}]</string>
         </property>
         <property name="channel" stdset="0">
-         <string/>
+         <string>ca://und:Stop</string>
         </property>
         <property name="pressValue" stdset="0">
          <string>1</string>
@@ -1044,194 +1161,239 @@
    </item>
    <item row="1" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox_5">
-     <property name="title">
-      <string>Test Parameters</string>
-     </property>
-     <widget class="QLabel" name="label_5">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>51</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Points:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Comments:</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="le_points">
-      <property name="geometry">
-       <rect>
-        <x>92</x>
-        <y>30</y>
-        <width>161</width>
-        <height>23</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="le_comments">
-      <property name="geometry">
-       <rect>
-        <x>92</x>
-        <y>60</y>
-        <width>161</width>
-        <height>23</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-   </item>
-   <item row="1" column="2" rowspan="2">
-    <widget class="QGroupBox" name="groupBox_4">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
      <property name="title">
-      <string>Cam Parameters</string>
+      <string>Coupling</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_5">
+     <layout class="QGridLayout" name="gridLayout_10">
       <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout_7">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_9">
+       <layout class="QGridLayout" name="gridLayout_9">
+        <item row="1" column="4">
+         <widget class="QComboBox" name="cmb_slave_2">
+          <item>
+           <property name="text">
+            <string>--</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>A</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>B</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>C</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>D</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLabel" name="label_7">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Distance Scaling:</string>
+           <string>Slave 2:</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="PyDMLineEdit" name="le_CamDScaling">
+        <item row="0" column="6">
+         <widget class="QLabel" name="label_8">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="toolTip">
-           <string/>
-          </property>
-          <property name="precision" stdset="0">
-           <number>0</number>
-          </property>
-          <property name="precisionFromPV" stdset="0">
-           <bool>true</bool>
-          </property>
-          <property name="channel" stdset="0">
-           <string>ca://und:CamDScaling</string>
-          </property>
-          <property name="displayFormat" stdset="0">
-           <enum>PyDMLineEdit::Default</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_10">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Time Scaling:</string>
+           <string>Slave 3:</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="PyDMLineEdit" name="le_CamTScaling">
+         <widget class="QCheckBox" name="chb_invert_slv1">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="toolTip">
-           <string/>
+          <property name="text">
+           <string>-</string>
           </property>
-          <property name="precision" stdset="0">
-           <number>0</number>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QCheckBox" name="chb_invert_slv2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="precisionFromPV" stdset="0">
-           <bool>true</bool>
+          <property name="text">
+           <string>-</string>
           </property>
-          <property name="channel" stdset="0">
-           <string>ca://und:CamTScaling</string>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QComboBox" name="cmb_master">
+          <item>
+           <property name="text">
+            <string>A</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>B</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>C</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>D</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QComboBox" name="cmb_slave_1">
+          <item>
+           <property name="text">
+            <string>--</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>A</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>B</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>C</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>D</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_6">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="displayFormat" stdset="0">
-           <enum>PyDMLineEdit::Default</enum>
+          <property name="text">
+           <string>Slave 1:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Master:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="6">
+         <widget class="QComboBox" name="cmb_slave_3">
+          <item>
+           <property name="text">
+            <string>--</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>A</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>B</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>C</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>D</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QCheckBox" name="chb_invert_slv3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>-</string>
           </property>
          </widget>
         </item>
        </layout>
       </item>
       <item row="1" column="0">
-       <widget class="PyDMPushButton" name="pbt_Cam">
+       <widget class="PyDMPushButton" name="pbt_couple">
         <property name="toolTip">
          <string/>
         </property>
         <property name="text">
-         <string>Cam</string>
-        </property>
-        <property name="checkable">
-         <bool>false</bool>
+         <string>Couple Axes</string>
         </property>
         <property name="rules" stdset="0">
          <string>[{&quot;name&quot;: &quot;Enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;channel&quot;: &quot;ca://und:AxisA:DriveEnableStatus&quot;, &quot;trigger&quot;: true}]}]</string>
         </property>
         <property name="channel" stdset="0">
-         <string>ca://und:EnCam</string>
-        </property>
-        <property name="pressValue" stdset="0">
-         <string>1</string>
+         <string>ca://und:EnGeneralCoupling</string>
         </property>
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="PyDMPushButton" name="pbt_Stop">
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>STOP</string>
-     </property>
-     <property name="checkable">
-      <bool>false</bool>
-     </property>
-     <property name="rules" stdset="0">
-      <string>[{&quot;name&quot;: &quot;Enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;channel&quot;: &quot;ca://und:AxisA:DriveEnableStatus&quot;, &quot;trigger&quot;: true}]}]</string>
-     </property>
-     <property name="channel" stdset="0">
-      <string>ca://und:Stop</string>
-     </property>
-     <property name="pressValue" stdset="0">
-      <string>1</string>
-     </property>
     </widget>
    </item>
   </layout>
