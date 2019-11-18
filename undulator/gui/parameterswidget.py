@@ -15,6 +15,6 @@ class ParametersWidget(_QWidget):
         """Set up the ui."""
         super().__init__(parent)
 
-        #setup the ui
+        # setup the ui
         uifile = _getUiFile(self)
         self.ui = _uic.loadUi(uifile, self)

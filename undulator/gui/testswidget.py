@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import sys as _sys
+import numpy as _np
+import time as _time
 import qtpy.uic as _uic
 import serial as _serial
+import threading as _threading
 import traceback as _traceback
 
 from qtpy.QtCore import (
@@ -24,13 +27,15 @@ class TestsWidget(_QWidget):
         """Set up the ui."""
         super().__init__(parent)
 
-        #setup the ui
+        # setup the ui
         uifile = _getUiFile(self)
         self.ui = _uic.loadUi(uifile, self)
 
         self.display = _display
         self.display_timer = _QTimer()
-        self.display_upd_time = 1000  # ms
+        self.display_upd_time = 1500  # ms
+
+        self.thd_read_display = None
 
         # connect signals and slots
         self.connect_signals_slots()
@@ -71,6 +76,11 @@ class TestsWidget(_QWidget):
                 return
             self.ui.pbt_connect.setEnabled(False)
             self.ui.pbt_disconnect.setEnabled(True)
+            if self.thd_read_display is None:
+                self.thd_read_display = ThdReadDisplay()
+            elif not self.thd_read_display.is_alive():
+                self.thd_read_display = ThdReadDisplay()
+            self.thd_read_display.start()
             self.display_timer.start(self.display_upd_time)
         except Exception:
             _traceback.print_exc(file=_sys.stdout)
@@ -81,9 +91,11 @@ class TestsWidget(_QWidget):
         """Disconnects the Heidenhain display."""
         try:
             self.display_timer.stop()
+            self.thd_read_display.run_flag = False
             if self.display.disconnect() is None:
                 _msg = 'Could not disconnect the Heidenhain display.'
                 _QMessageBox.warning(self, 'Failure', _msg, _QMessageBox.Ok)
+                return
             self.ui.pbt_connect.setEnabled(True)
             self.ui.pbt_disconnect.setEnabled(False)
         except Exception:
@@ -94,12 +106,31 @@ class TestsWidget(_QWidget):
     def update_display(self):
         """Reads and updates display values on the interface."""
         try:
-            _values = self.display.read_display()
-            self.ui.lcd_x.display(_values[0])
-            self.ui.lcd_y.display(_values[1])
-            self.ui.lcd_z.display(_values[2])
+            if self.isActiveWindow():
+                self.ui.lcd_x.display(self.thd_read_display.x)
+                self.ui.lcd_y.display(self.thd_read_display.y)
+                self.ui.lcd_z.display(self.thd_read_display.z)
         except Exception:
             self.display_timer.stop()
             _traceback.print_exc(file=_sys.stdout)
             _msg = 'Failed to read the display, please check the connections.'
             _QMessageBox.warning(self, 'Failure', _msg, _QMessageBox.Ok)
+
+
+class ThdReadDisplay(_threading.Thread):
+    def __init__(self):
+        super().__init__()
+        self.setDaemon = True
+        self.name = 'ThdReadDisplay'
+
+        self.run_flag = True
+
+        self.x = _np.nan
+        self.y = _np.nan
+        self.z = _np.nan
+
+    def run(self):
+        self.run_flag = True
+        while self.run_flag:
+            self.x, self.y, self.z = _display.read_display()
+            _time.sleep(1.37)

@@ -3,16 +3,17 @@
 import numpy as _np
 import time as _time
 import qtpy.uic as _uic
+import threading as _threading
+
+from qtpy.QtCore import (
+    QThread as _QThread,
+    )
 from qtpy.QtWidgets import (
     QWidget as _QWidget,
     QMessageBox as _QMessageBox,
     )
-from qtpy.QtCore import (
-    QThread as _QThread,
-    )
-from epics import PV as _PV
-import threading as _threading
 
+from epics import PV as _PV
 from undulator.gui.utils import getUiFile as _getUiFile
 
 
@@ -23,7 +24,7 @@ class ControlWidget(_QWidget):
         """Set up the ui."""
         super().__init__(parent)
 
-        #setup the ui
+        # setup the ui
         uifile = _getUiFile(self)
         self.ui = _uic.loadUi(uifile, self)
         self.test_thd = _QThread()
