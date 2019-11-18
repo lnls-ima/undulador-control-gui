@@ -9,23 +9,21 @@ with open(os.path.join(basedir, 'VERSION'), 'r') as _f:
 
 
 setup(
-    name='imautils',
+    name='undulator',
     version=__version__,
-    description="LNLS magnet's group utilities package",
-    url='https://github.com/lnls-ima/ima-utils',
+    description="LNLS magnet's group undulator control gui",
+    url='https://github.com/lnls-ima/undulator-control-gui',
     author='lnls-ima',
     license='GNU License',
     packages=find_packages(),
     install_requires=[
         'numpy',
-        'pyvisa',
         'pyserial',
-        'minimalmodbus',
-        'paramiko',
         'matplotlib',
         'qtpy',
+        'pandas',
     ],
-    package_data={'imautils': ['VERSION']},
+    package_data={'undulator': ['VERSION']},
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=['nose'],
