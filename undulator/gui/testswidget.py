@@ -34,7 +34,6 @@ class TestsWidget(_QWidget):
 
         self.display = _display
         self.display_timer = _QTimer()
-        self.display_upd_time = 1500  # ms
 
         self.thd_read_display = None
         self.test_thd = None
@@ -73,6 +72,7 @@ class TestsWidget(_QWidget):
     def connect(self):
         """Connects the Heidenhain display."""
         _port = self.ui.cmb_port.currentText()
+        _period = self.ui.spd_period.value()
         try:
             _ans = self.display.connect(port=_port, baudrate=9600,
                                         bytesize=_serial.SEVENBITS,
@@ -85,11 +85,11 @@ class TestsWidget(_QWidget):
             self.ui.pbt_connect.setEnabled(False)
             self.ui.pbt_disconnect.setEnabled(True)
             if self.thd_read_display is None:
-                self.thd_read_display = ThdReadDisplay()
+                self.thd_read_display = ThdReadDisplay(_period)
             elif not self.thd_read_display.is_alive():
-                self.thd_read_display = ThdReadDisplay()
+                self.thd_read_display = ThdReadDisplay(_period)
             self.thd_read_display.start()
-            self.display_timer.start(self.display_upd_time)
+            self.display_timer.start(_period*1000 + 137)
         except Exception:
             _traceback.print_exc(file=_sys.stdout)
             _msg = 'Could not connect to the Heidenhain display.'
@@ -220,11 +220,16 @@ class TestsWidget(_QWidget):
 class ThdReadDisplay(_threading.Thread):
     """Thread reads Heidenhain display and provides its data to the
     interface."""
-    def __init__(self):
+    def __init__(self, period=0.1):
+        """Initializes the thread.
+
+        Args:
+            period (float): display reading period in seconds."""
         super().__init__()
         self.setDaemon = True
         self.name = 'ThdReadDisplay'
 
+        self.period = period
         self.run_flag = True
 
         self.x = _np.nan
@@ -235,7 +240,7 @@ class ThdReadDisplay(_threading.Thread):
         self.run_flag = True
         while self.run_flag:
             self.x, self.y, self.z = _display.read_display()
-            _time.sleep(1.37)
+            _time.sleep(self.period)
 
 
 class ThdTestAxis(_threading.Thread):
