@@ -19,7 +19,6 @@ from qtpy.QtWidgets import (
 from epics import PV as _PV
 from undulator.devices import display as _display
 from undulator.gui.utils import getUiFile as _getUiFile
-from main import _thread
 
 
 class TestsWidget(_QWidget):
