@@ -409,9 +409,9 @@ class ThdTestAxis(_threading.Thread):
                     self.motorC['MovePos'].put(_pos)
                     self.motorD['MovePos'].put(_pos)
                     while not all([self.motorA['MovePos'].get() == _pos,
-                                   self.motorA['MovePos'].get() == _pos,
-                                   self.motorA['MovePos'].get() == _pos,
-                                   self.motorA['MovePos'].get() == _pos]):
+                                   self.motorB['MovePos'].get() == _pos,
+                                   self.motorC['MovePos'].get() == _pos,
+                                   self.motorD['MovePos'].get() == _pos]):
                         _t = _time.time() - _t0
                         _info = self.get_axis_info(_t)
                         self.data.append(_info)
