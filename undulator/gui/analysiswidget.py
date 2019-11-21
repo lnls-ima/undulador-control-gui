@@ -71,9 +71,8 @@ class AnalysisWidget(_QWidget):
                 _filename = self.ui.cmb_file.currentText() + '.dat'
                 if _filename != '.dat':
                     with open(_filename, 'r') as _f:
-                        _comments = _f.readline()[:-1].strip('Comments: ')
-                        _points = _f.readline()[:-1].strip(
-                            'Test positions [mm]: ')
+                        _comments = _f.readline().split(': ')[1][:-1]
+                        _points = _f.readline().split(': ')[1][:-1]
                     self.df = _pd.read_csv(_filename, sep='\t',
                                            skiprows=2, header=0)
                 self.ui.le_comments.setText(_comments)
