@@ -5,7 +5,6 @@ import sys as _sys
 import pandas as _pd
 import qtpy.uic as _uic
 import traceback as _traceback
-import matplotlib.pyplot as _plt
 
 from qtpy.QtWidgets import (
     QWidget as _QWidget,
