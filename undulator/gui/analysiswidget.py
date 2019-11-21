@@ -5,6 +5,7 @@ import sys as _sys
 import pandas as _pd
 import qtpy.uic as _uic
 import traceback as _traceback
+import matplotlib.pyplot as _plt
 
 from qtpy.QtWidgets import (
     QWidget as _QWidget,
@@ -46,7 +47,6 @@ class AnalysisWidget(_QWidget):
         """Adds plot widget to the analysis widget."""
         self.ui.plot = _mplwidget.MplWidget()
         self.ui.vbl_plot.addWidget(self.ui.plot)
-        self.ui.plot.canvas.ax.twinx()
 
     def list_test_files(self):
         """List test files and insert in the combobox."""
@@ -111,15 +111,14 @@ class AnalysisWidget(_QWidget):
                 _data = self.ui.cmb_plot.currentText()
                 _data_2 = self.ui.cmb_plot_2.currentText()
                 _ax = _canvas.ax.get_shared_x_axes().get_siblings(_canvas.ax)
-                _ax_y1 = _ax[1]
-                _ax_y2 = _ax[0]
+                if len(_ax) == 2:
+                    _ax_y1 = _ax[1]
+                    _ax_y2 = _ax[0]
+                elif len(_ax) == 1:
+                    _ax_y1 = _ax[0]
+                    if _data_2 is not '':
+                        _ax_y2 = self.ui.plot.canvas.ax.twinx()
                 _ax_y1.clear()
-                _ax_y2.clear()
-                if _data_2 is not '':
-                    _ax_y2.plot(self.df['t [s]'], self.df[_data_2],
-                                'r-', label=_data_2)
-                    _ax_y2.set_ylabel(_data_2)
-                    _ax_y2.legend()
                 if _data in ['ActualPos [mm]', 'PosError [mm]',
                              'Current [A]', 'Torque [%]']:
                     _data_split = _data.split(' ')
@@ -132,6 +131,15 @@ class AnalysisWidget(_QWidget):
                                 label=_data, alpha=0.8)
                 _ax_y1.set_ylabel(_data)
                 _ax_y1.legend()
+                if _data_2 is not '':
+                    _ax_y2.clear()
+                    _ax_y2.plot(self.df['t [s]'], self.df[_data_2],
+                                'r-', label=_data_2, alpha=0.8)
+                    _ax_y2.set_ylabel(_data_2)
+                    _ax_y2.legend()
+                else:
+                    if len(_ax) == 2:
+                        _ax_y2.remove()
                 _canvas.ax.set_xlabel('t [s]')
                 _canvas.ax.grid(1)
                 _canvas.fig.tight_layout()
