@@ -88,7 +88,7 @@ class AnalysisWidget(_QWidget):
     def list_data(self):
         """Lists data and inserts into plot combobox."""
         self.column_names = self.df.columns.values[1:].tolist()
-        _column_names_ax1 = self.column_names
+        _column_names_ax1 = self.column_names.copy()
         for _item in ['ActualPos [mm]', 'PosError [mm]',
                       'Current [A]', 'Torque [%]']:
             _column_names_ax1.append(_item)

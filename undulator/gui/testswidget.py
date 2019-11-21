@@ -220,7 +220,7 @@ class TestsWidget(_QWidget):
 class ThdReadDisplay(_threading.Thread):
     """Thread reads Heidenhain display and provides its data to the
     interface."""
-    def __init__(self, period=0.1):
+    def __init__(self, period=0.2):
         """Initializes the thread.
 
         Args:
@@ -230,6 +230,7 @@ class ThdReadDisplay(_threading.Thread):
         self.name = 'ThdReadDisplay'
 
         self.period = period
+        self.reading_time = 0.2
         self.run_flag = True
 
         self.x = _np.nan
@@ -237,10 +238,13 @@ class ThdReadDisplay(_threading.Thread):
         self.z = _np.nan
 
     def run(self):
+        _waiting_time = self.period - self.reading_time
+        if _waiting_time < 0:
+            _waiting_time = 0
         self.run_flag = True
         while self.run_flag:
             self.x, self.y, self.z = _display.read_display()
-            _time.sleep(self.period)
+            _time.sleep(_waiting_time)
 
 
 class ThdTestAxis(_threading.Thread):
@@ -378,7 +382,6 @@ class ThdTestAxis(_threading.Thread):
         _upd_interval = 0.02
         self.data = []
 
-        self.display_flag = False
         self.thd_display = None
         _thd_list = _threading.enumerate()
         for _t in _thd_list:
@@ -497,7 +500,7 @@ class ThdTestAxis(_threading.Thread):
                  'CurrentD [A]': self.motorD['Current'].get(),
                  'TorqueD [%]': self.motorD['Torque'].get()}
 
-        if self.display_flag:
+        if self.thd_display is not None:
             _info['DisplayX [mm]'] = self.thd_display.x
             _info['DisplayY [mm]'] = self.thd_display.y
             _info['DisplayZ [mm]'] = self.thd_display.z
