@@ -250,6 +250,7 @@ class ThdReadDisplay(_threading.Thread):
         self.run_flag = True
         while self.run_flag:
             if self.zero_flag:
+                self.zero_flag = False
                 _display.reset_set_ref()
             self.x, self.y, self.z = _display.read_display()
             _time.sleep(_waiting_time)
