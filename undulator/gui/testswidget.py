@@ -46,6 +46,7 @@ class TestsWidget(_QWidget):
         self.ui.chb_display.stateChanged.connect(self.enable_display)
         self.ui.pbt_connect.clicked.connect(self.connect)
         self.ui.pbt_disconnect.clicked.connect(self.disconnect)
+        self.ui.pbt_zero.clicked.connect(self.zero_display)
         self.ui.pbt_test.clicked.connect(self.discrete_test)
         self.ui.pbt_start_cont.clicked.connect(self.start_continuous_test)
         self.ui.pbt_stop_cont.clicked.connect(self.stop_continuous_test)
@@ -123,6 +124,10 @@ class TestsWidget(_QWidget):
             _traceback.print_exc(file=_sys.stdout)
             _msg = 'Failed to read the display, please check the connections.'
             _QMessageBox.warning(self, 'Failure', _msg, _QMessageBox.Ok)
+
+    def zero_display(self):
+        """Set display reference to zero."""
+        self.thd_read_display.zero_flag = True
 
     def discrete_test(self):
         """Creates a discrete test thread."""
@@ -232,6 +237,7 @@ class ThdReadDisplay(_threading.Thread):
         self.period = period
         self.reading_time = 0.2
         self.run_flag = True
+        self.zero_flag = False
 
         self.x = _np.nan
         self.y = _np.nan
@@ -243,6 +249,8 @@ class ThdReadDisplay(_threading.Thread):
             _waiting_time = 0
         self.run_flag = True
         while self.run_flag:
+            if self.zero_flag:
+                _display.reset_set_ref()
             self.x, self.y, self.z = _display.read_display()
             _time.sleep(_waiting_time)
 

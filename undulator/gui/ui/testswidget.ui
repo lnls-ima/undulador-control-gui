@@ -156,6 +156,16 @@
         </property>
        </widget>
       </item>
+      <item row="7" column="0" colspan="4">
+       <widget class="QPushButton" name="pbt_zero">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Zero</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -469,6 +479,22 @@
     <hint type="destinationlabel">
      <x>167</x>
      <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chb_display</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>pbt_zero</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>109</x>
+     <y>49</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>109</x>
+     <y>335</y>
     </hint>
    </hints>
   </connection>
